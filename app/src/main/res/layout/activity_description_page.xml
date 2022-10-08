@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackgroundBorderless"
+    android:orientation="vertical"
+    android:padding="5dp"
+    android:transitionName="label"
+    tools:targetApi="lollipop">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/logo"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="40dp"
+        android:visibility="gone" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:visibility="visible"
+        app:lottie_autoPlay="true"
+        android:id="@+id/lottie"
+        app:lottie_loop="true"
+        app:lottie_speed="0.9"
+        app:lottie_url="https://assets8.lottiefiles.com/packages/lf20_8xkaygbw.json" />
+
+    <ImageView
+        android:id="@+id/logo1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/ring"
+        android:padding="12dp"
+        android:src="@mipmap/ic_launcher_round"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center_horizontal"
+            android:paddingTop="10dp"
+            android:text="Diet/Equipment/Workout name"
+            android:textColor="@color/purple_700"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/subLabel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:padding="5dp"
+            android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            android:textColor="@color/text_sub"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</LinearLayout>
