@@ -1,4 +1,5 @@
-package com.archana.gym;
+package com.example.gymmanagementapp;
+
 
 import android.content.Intent;
 import android.os.Bundle;

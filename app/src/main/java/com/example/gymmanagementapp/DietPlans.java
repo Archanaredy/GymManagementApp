@@ -1,4 +1,4 @@
-package com.archana.gym;
+package com.example.gymmanagementapp;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,10 +10,12 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.gymmanagementapp.AddDiet;
+import com.example.gymmanagementapp.R;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
 import java.util.ArrayList;
-
+import com.example.gymmanagementapp.BaseActivity;
 
 public class DietPlans extends BaseActivity {
 
