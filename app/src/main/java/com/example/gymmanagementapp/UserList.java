@@ -10,13 +10,13 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.gymmanagementapp.adapters.PrimaryMenuRecycleAdapter;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserList extends AppCompatActivity {
-
-
 
     PrimaryMenuRecycleAdapter adapter = new PrimaryMenuRecycleAdapter();
     List<MenuOptionPrimary> menuOptionList = new ArrayList<>();
