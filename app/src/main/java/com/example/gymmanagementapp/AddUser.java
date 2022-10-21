@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class AddUser extends AppCompatActivity {
+public class AddUser extends BaseActivity {
     private Button login;
     EditText name, number, age, height, weight, image;
 
