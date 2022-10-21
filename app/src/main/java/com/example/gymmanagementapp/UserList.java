@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gymmanagementapp.adapters.PrimaryMenuRecycleAdapter;
+import com.example.gymmanagementapp.pojo.MenuOptionPrimary;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
