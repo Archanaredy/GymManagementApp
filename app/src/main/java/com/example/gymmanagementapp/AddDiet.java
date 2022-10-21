@@ -18,7 +18,8 @@ public class AddDiet extends BaseActivity {
         add = findViewById(R.id.add);
         image = findViewById(R.id.image);
         add.setOnClickListener(view -> {
-            finish();
+            if (validator.validate(name) && validator.validate(description) && validator.validate(image))
+                finish();
         });
     }
 

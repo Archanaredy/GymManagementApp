@@ -7,9 +7,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.gymmanagementapp.util.GenericValidator;
+
 public class BaseActivity extends AppCompatActivity {
 
     private static final String TAG = BaseActivity.class.getSimpleName();
+    GenericValidator validator = new GenericValidator();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

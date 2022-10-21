@@ -3,6 +3,7 @@ package com.example.gymmanagementapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -24,5 +25,31 @@ public class AdminDashBoard extends AppCompatActivity {
         profile.setOnClickListener(view -> startActivity(new Intent(AdminDashBoard.this, Profile.class)));
         workout.setOnClickListener(view -> startActivity(new Intent(AdminDashBoard.this, WorkOutList.class)));
         diets.setOnClickListener(view -> startActivity(new Intent(AdminDashBoard.this, DietPlans.class)));
+    }
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder
+                = new AlertDialog
+                .Builder(this);
+        builder.setMessage("Do you want to exit ?");
+        builder.setTitle("Alert !");
+        builder.setCancelable(false);
+
+        builder
+                .setPositiveButton(
+                        "Yes",
+                        (dialog, which) -> {
+                            finish();
+                        });
+
+        builder
+                .setNegativeButton(
+                        "No",
+                        (dialog, which) -> {
+                            dialog.cancel();
+                        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 }
