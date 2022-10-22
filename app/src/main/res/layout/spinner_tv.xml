@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tv"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:autofillHints=""
+    android:background="@color/colorPrimary"
+    android:drawableRight="@drawable/ic_baseline_arrow_drop_down_24"
+    android:drawableTint="@color/text_sub"
+    android:padding="10dp"
+    android:text=""
+    android:textColor="@color/text_sub"
+    android:textColorHint="@color/text_sub"
+    android:textSize="16dp"
+    android:textStyle="bold" />
