@@ -18,12 +18,14 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         login = findViewById(R.id.login_btn);
+        number = findViewById(R.id.number);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (validator.validate(number)) {
                     startActivity(new Intent(MainActivity.this, OtpScreen.class));
                 }
+
             }
         });
     }
