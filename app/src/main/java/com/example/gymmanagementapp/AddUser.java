@@ -1,15 +1,17 @@
 package com.example.gymmanagementapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.gymmanagementapp.pojo.AddUserRequest;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class AddUser extends BaseActivity {
-    private Button login;
+    Button login;
     EditText name, number, age, height, weight, image;
 
     @Override
@@ -26,7 +28,22 @@ public class AddUser extends BaseActivity {
 
         login.setOnClickListener(view -> {
             if (validator.validate(name) && validator.validate(number) && validator.validate(age) && validator.validate(height) && validator.validate(weight) && validator.validate(image))
+                addUser();
+        });
+    }
+
+    private void addUser() {
+        api.create(new AddUserRequest(name.getText().toString(), number.getText().toString(), age.getText().toString(), height.getText().toString(), weight.getText().toString(), image.getText().toString())).enqueue(new Callback<AddUserRequest>() {
+            @Override
+            public void onResponse(Call<AddUserRequest> call, Response<AddUserRequest> response) {
+                makeText("User added.");
                 finish();
+            }
+
+            @Override
+            public void onFailure(Call<AddUserRequest> call, Throwable t) {
+
+            }
         });
     }
 }
