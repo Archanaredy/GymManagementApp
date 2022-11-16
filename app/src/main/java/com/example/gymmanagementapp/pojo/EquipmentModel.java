@@ -92,10 +92,4 @@ public class EquipmentModel {
         this.updatedAt = updatedAt;
     }
 
-    public EquipmentModel(String image, String name, String description, String status) {
-        this.image = image;
-        this.name = name;
-        this.description = description;
-        this.status = status;
-    }
 }
