@@ -1,4 +1,4 @@
-package com.example.gymmanagementapp.util;
+package com.example.gymmanagementapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

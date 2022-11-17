@@ -1,10 +1,7 @@
-package com.example.gymmanagementapp.util;
+package com.example.gymmanagementapp;
 
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;

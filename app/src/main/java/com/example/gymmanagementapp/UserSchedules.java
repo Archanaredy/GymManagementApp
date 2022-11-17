@@ -1,11 +1,10 @@
-package com.example.gymmanagementapp.util;
+package com.example.gymmanagementapp;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.gymmanagementapp.BaseActivity;
 import com.example.gymmanagementapp.adapters.WorkoutAdapter;
 import com.example.gymmanagementapp.pojo.AddUserScheduleRequest;
 import com.example.gymmanagementapp.pojo.MenuOptionPrimary;
