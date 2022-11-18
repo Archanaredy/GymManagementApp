@@ -8,16 +8,20 @@ import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gymmanagementapp.adapters.PrimaryMenuRecycleAdapter;
 import com.example.gymmanagementapp.pojo.MenuOptionPrimary;
+import com.example.gymmanagementapp.pojo.UserModel;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserList extends AppCompatActivity {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class UserList extends BaseActivity {
 
     PrimaryMenuRecycleAdapter adapter = new PrimaryMenuRecycleAdapter();
     List<MenuOptionPrimary> menuOptionList = new ArrayList<>();
@@ -61,21 +65,29 @@ public class UserList extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        fetchData();
+        fetch();
     }
 
-    private void fetchData() {
+    private void fetch() {
+        api.users().enqueue(new Callback<List<UserModel>>() {
+            @Override
+            public void onResponse(Call<List<UserModel>> call, Response<List<UserModel>> response) {
         menuOptionList.clear();
-        for (int x = 0; x < 30; x++)
-            menuOptionList.add(new MenuOptionPrimary("Name " + x, "Number " + x, "image " + x));
+        for (UserModel user : response.body())
+            menuOptionList.add(new MenuOptionPrimary(user.getName(), user.getNumber(), user.getImage());
         menuRow.setAdapter(adapter);
         adapter.setMenuOptionList(menuOptionList);
         adapter.setRecyclerClickListener(position -> {
-//            startActivity(new Intent(UserList.this, UserSchedules.class).putExtra("id", response.body().get(position).getId()));
+            startActivity(new Intent(UserList.this, UserSchedules.class).putExtra("id", response.body().get(position).getId()));
         });
     }
 
+            @Override
+            public void onFailure(Call<List<UserModel>> call, Throwable t) {
 
+            }
+        });
+    }
     private void filter(String text) {
         ArrayList<MenuOptionPrimary> filteredlist = new ArrayList<>();
         for (MenuOptionPrimary item : menuOptionList) {
