@@ -5,12 +5,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import androidx.appcompat.app.AppCompatActivity;
-
+import com.bumptech.glide.Glide;
 
 
-public class DescriptionPage extends AppCompatActivity {
+public class DescriptionPage extends BaseActivity {
     TextView name, description;
     ImageView logo;
     View view;
@@ -23,6 +21,13 @@ public class DescriptionPage extends AppCompatActivity {
         description = findViewById(R.id.subLabel);
         view = findViewById(R.id.lottie);
         logo = findViewById(R.id.logo);
+        name.setText(getIntent().getStringExtra("name"));
+        description.setText(getIntent().getStringExtra("desc"));
+        if (getIntent().getStringExtra("image") != null) {
+            hideView(view);
+            showView(logo);
+            Glide.with(this).load(getIntent().getStringExtra("image")).error(R.drawable.dumbell).circleCrop().into(logo);
+        }
 
     }
 }

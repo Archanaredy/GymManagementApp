@@ -10,8 +10,8 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.example.gym.adapters.SpinnerAdapter;
-import com.example.gym.pojo.AddUserScheduleRequest;
+import com.example.gymmanagementapp.adapters.SpinnerAdapter;
+import com.example.gymmanagementapp.pojo.AddUserScheduleRequest;
 
 import retrofit2.Call;
 import retrofit2.Callback;
