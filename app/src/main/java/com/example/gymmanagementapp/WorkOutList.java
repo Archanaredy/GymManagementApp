@@ -10,10 +10,16 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gymmanagementapp.adapters.WorkoutAdapter;
+import com.example.gymmanagementapp.pojo.BaseRequest;
 import com.example.gymmanagementapp.pojo.MenuOptionPrimary;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 public class WorkOutList extends BaseActivity {
 
@@ -29,9 +35,13 @@ public class WorkOutList extends BaseActivity {
         menuRow = findViewById(R.id.list);
         ExtendedFloatingActionButton add;
         add = findViewById(R.id.add);
+        if (!preferences.getString("num", "").equals("9999999999")) {
+            hideView(add);
+        }
 
         add.setOnClickListener(view -> {
             Intent intent = new Intent(WorkOutList.this, AddDiet.class);
+            intent.putExtra("route", "workouts");
             startActivity(intent);
         });
         search = findViewById(R.id.search);
@@ -63,20 +73,27 @@ public class WorkOutList extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        fetchData();
+        fetchDate();
     }
 
-    private void fetchData() {
+    private void fetchDate() {
 
-        menuOptionList.clear();
-        for (int x = 0; x < 30; x++)
-            menuOptionList.add(new MenuOptionPrimary("Name " + x, "description " + x, "image " + x));
-        menuRow.setAdapter(adapter);
-        adapter.setMenuOptionList(menuOptionList);
-        adapter.setRecyclerClickListener(position -> {
-//            show(menuOptionList.get(position));
-        });
-    }
+        api.get("workouts").enqueue(new Callback<List<BaseRequest>>() {
+            @Override
+            public void onResponse(Call<List<BaseRequest>> call, Response<List<BaseRequest>> response) {
+                menuOptionList.clear();
+                for (BaseRequest user : response.body())
+                    menuOptionList.add(new MenuOptionPrimary(user.getName(), user.getDescription(), user.getImage()));
+                menuRow.setAdapter(adapter);
+                adapter.setMenuOptionList(menuOptionList);
+                adapter.setRecyclerClickListener(position -> {
+                    Intent intent = new Intent(WorkOutList.this, DescriptionPage.class);
+                    intent.putExtra("name", menuOptionList.get(position).getTitle());
+                    intent.putExtra("desc", menuOptionList.get(position).getSubTitle());
+                    intent.putExtra("image", menuOptionList.get(position).getImage());
+                    startActivity(intent);
+                });
+            }
 
 
     private void filter(String text) {
@@ -92,8 +109,3 @@ public class WorkOutList extends BaseActivity {
             adapter.setMenuOptionList(filteredlist);
         }
     }
-
-
-
-}
-
