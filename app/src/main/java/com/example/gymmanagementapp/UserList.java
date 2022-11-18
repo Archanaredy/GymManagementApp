@@ -74,7 +74,7 @@ public class UserList extends BaseActivity {
             public void onResponse(Call<List<UserModel>> call, Response<List<UserModel>> response) {
         menuOptionList.clear();
         for (UserModel user : response.body())
-            menuOptionList.add(new MenuOptionPrimary(user.getName(), user.getNumber(), user.getImage());
+            menuOptionList.add(new MenuOptionPrimary(user.getName(), user.getNumber(), user.getImage()));
         menuRow.setAdapter(adapter);
         adapter.setMenuOptionList(menuOptionList);
         adapter.setRecyclerClickListener(position -> {

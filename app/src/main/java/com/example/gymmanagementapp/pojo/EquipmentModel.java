@@ -92,4 +92,17 @@ public class EquipmentModel {
         this.updatedAt = updatedAt;
     }
 
+    @Override
+    public String toString() {
+        return "EquipmentModel{" +
+                "image='" + image + '\'' +
+                ", createdAt='" + createdAt + '\'' +
+                ", V=" + V +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", id='" + id + '\'' +
+                ", status='" + status + '\'' +
+                ", updatedAt='" + updatedAt + '\'' +
+                '}';
+    }
 }

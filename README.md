@@ -1,9 +1,16 @@
 # GymManagementApp
-We have created the layout files and added the features of the application with navigations through out the application.
 
-Team Members
-Archana Lingampally
-Sai Malayaja Varada
-Venkata Shashankar Chennu
-Anusha Poreddy
-Anusha Poreddy
+
+## Team Members
+Archana Lingampally <br>
+Sai Malayaja Varada <br>
+Venkata Shashankar Chennu <br>
+Anusha Poreddy <br>
+
+### Test Credentials:
+**Admin:** <br>
+Mobile Number: 9999999999 <br>
+Verification Code: 1234 <br>
+
+**User:
+

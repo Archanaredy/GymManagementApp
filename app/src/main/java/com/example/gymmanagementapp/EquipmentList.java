@@ -122,17 +122,35 @@ public class EquipmentList extends BaseActivity {
         View view = LayoutInflater.from(this).inflate(R.layout.eq_dialog, null);
         TextView name = view.findViewById(R.id.label);
         TextView des = view.findViewById(R.id.subLabel);
+        TextView main = view.findViewById(R.id.main);
         ImageView logo = view.findViewById(R.id.logo);
         Button pri = view.findViewById(R.id.lock);
+        Button delete = view.findViewById(R.id.delete);
+        Button maintain = view.findViewById(R.id.maintain);
         name.setText(equipmentModel.getName());
         des.setText(equipmentModel.getDescription());
+        if (!preferences.getString("num", "").equals("9999999999")) {
+            hideView(delete);
+            hideView(maintain);
+        }
         Glide.with(EquipmentList.this).load(equipmentModel.getImage()).error(R.drawable.dumbell).circleCrop().into(logo);
         if (equipmentModel.getStatus().equals("0")) {
             pri.setBackground(getDrawable(R.drawable.button_bg_green));
             pri.setText("Lock/Book equipment");
-        } else {
+        } else if (equipmentModel.getStatus().equals("1")) {
             pri.setBackground(getDrawable(R.drawable.button_bg));
             pri.setText("Unlock equipment");
+        } else {
+            if (!preferences.getString("num", "").equals("9999999999")) {
+                hideView(pri);
+                showView(main);
+            } else {
+                hideView(maintain);
+                showView(pri);
+                hideView(main);
+                pri.setBackground(getDrawable(R.drawable.button_bg_green));
+                pri.setText("Bring out from maintenance");
+            }
         }
         pri.setOnClickListener(view1 -> {
             if (equipmentModel.getStatus().equals("0"))
@@ -151,6 +169,36 @@ public class EquipmentList extends BaseActivity {
                 }
             });
         });
+        maintain.setOnClickListener(view1 -> {
+            equipmentModel.setStatus("2");
+            api.update(equipmentModel.getId(), equipmentModel).enqueue(new Callback<EquipmentModel>() {
+                @Override
+                public void onResponse(Call<EquipmentModel> call, Response<EquipmentModel> response) {
+                    fetchDate();
+                    dialog.cancel();
+                }
+
+                @Override
+                public void onFailure(Call<EquipmentModel> call, Throwable t) {
+                    makeText(t.getMessage());
+                }
+            });
+        });
+        delete.setOnClickListener(view1 -> api.delete("equipment", equipmentModel.getId()).enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                dialog.cancel();
+                if (response.isSuccessful())
+                    makeText("Deleted successfully..");
+                fetchDate();
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+
+            }
+        }));
+
         dialog.setContentView(view);
         dialog.setCancelable(true);
         dialog.getWindow().setLayout(

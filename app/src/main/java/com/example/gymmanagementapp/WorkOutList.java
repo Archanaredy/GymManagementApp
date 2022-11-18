@@ -95,6 +95,13 @@ public class WorkOutList extends BaseActivity {
                 });
             }
 
+            @Override
+            public void onFailure(Call<List<BaseRequest>> call, Throwable t) {
+                makeText(t.getMessage());
+            }
+        });
+    }
+
 
     private void filter(String text) {
         ArrayList<MenuOptionPrimary> filteredlist = new ArrayList<>();
@@ -109,3 +116,4 @@ public class WorkOutList extends BaseActivity {
             adapter.setMenuOptionList(filteredlist);
         }
     }
+}

@@ -1,6 +1,7 @@
 package com.example.gymmanagementapp.adapters;
 
 import android.annotation.SuppressLint;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,21 +64,24 @@ public class EquipmentAdapter extends RecyclerView.Adapter<EquipmentAdapter.MyVi
         return new MyViewHolder(itemView);
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
+        Log.e("equip",menuOptionList.get(position).toString());
         holder.title.setText(menuOptionList.get(position).getName());
         holder.subTitle.setText(String.valueOf(menuOptionList.get(position).getDescription()));
         Glide.with(holder.itemView.getContext()).load(menuOptionList.get(position).getImage()).error(R.drawable.dumbell).circleCrop().into(holder.logo);
         if (menuOptionList.get(position).getStatus().equals("0")) {
             Glide.with(holder.itemView.getContext()).load(R.drawable.ring_green).into(holder.icon);
-        } else {
+        } else if (menuOptionList.get(position).getStatus().equals("1")) {
             Glide.with(holder.itemView.getContext()).load(R.drawable.ring_purple).into(holder.icon);
-        }
+        } else
+            Glide.with(holder.itemView.getContext()).load(R.drawable.ring_red).into(holder.icon);
+
         holder.itemView.setOnClickListener(view -> {
             recyclerClickListener.onclick(position);
         });
     }
-
     @Override
     public int getItemCount() {
         return menuOptionList.size();

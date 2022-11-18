@@ -6,10 +6,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.gymmanagementapp.pojo.UserModel;
-import com.jgabrielfreitas.core.BlurImageView;
-
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -18,7 +15,6 @@ public class MainActivity extends BaseActivity {
 
     // declare views
     Button login;
-    BlurImageView bg;
     EditText number;
 
     @Override
