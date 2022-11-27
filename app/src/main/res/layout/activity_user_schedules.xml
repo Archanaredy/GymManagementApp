@@ -64,5 +64,20 @@
         android:textColor="@color/white"
         app:icon="@drawable/ic_baseline_add_24"
         app:iconTint="@color/white" />
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/red"
+        android:text="Delete user"
+        android:textColor="@color/white"
+        app:icon="@drawable/ic_baseline_delete_24"
+        app:iconTint="@color/white" />
 
 </RelativeLayout>

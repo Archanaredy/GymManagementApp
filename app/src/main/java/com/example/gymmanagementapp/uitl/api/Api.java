@@ -48,4 +48,6 @@ public interface Api {
     Call<List<AddUserScheduleRequest>> getSchedules(@Path("id") String userId);
     @DELETE("/{route}/{id}")
     Call<String> delete(@Path("route") String route, @Path("id") String id);
+    @DELETE("/{route}/{id}")
+    Call<String> deleteUser(@Path("route") String route, @Path("id") String id);
 }

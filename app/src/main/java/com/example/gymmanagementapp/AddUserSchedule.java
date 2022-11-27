@@ -52,7 +52,7 @@ public class AddUserSchedule extends BaseActivity {
             TimePickerDialog timePickerDialog = new TimePickerDialog(this,
                     (view12, hourOfDay, minute) -> {
                         closingSelected = true;
-                        close.setText(hourOfDay + ":" + minute);
+                        close.setText(String.format("%02d", hourOfDay) + ":" + String.format("%02d", minute));
                         closeSelected = ((hourOfDay * 3600L) + (minute * 60L) + (selectedDateSecs));
                     }, mHour, mMinute, true);
             timePickerDialog.show();
@@ -67,7 +67,7 @@ public class AddUserSchedule extends BaseActivity {
             TimePickerDialog timePickerDialog = new TimePickerDialog(this,
                     (view1, hourOfDay, minute) -> {
                         openingSelected = true;
-                        open.setText(hourOfDay + ":" + minute);
+                        open.setText(String.format("%02d", hourOfDay) + ":" + String.format("%02d", minute));
                         openSelected = ((hourOfDay * 3600L) + (minute * 60L) + (selectedDateSecs));
                     }, mHour, mMinute, true);
             timePickerDialog.show();

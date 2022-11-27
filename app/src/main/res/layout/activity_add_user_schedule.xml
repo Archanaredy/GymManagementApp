@@ -81,7 +81,7 @@
         android:drawableTint="@color/text_sub"
         android:foreground="?android:attr/selectableItemBackgroundBorderless"
         android:padding="10dp"
-        android:text="Schedule start time"
+        android:text="Schedule end time"
         android:textColor="@color/text_sub"
         android:textColorHint="@color/text_sub"
         android:textSize="16dp"

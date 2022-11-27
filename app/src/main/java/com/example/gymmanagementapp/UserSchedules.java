@@ -4,6 +4,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.gymmanagementapp.adapters.WorkoutAdapter;
 import com.example.gymmanagementapp.pojo.AddUserScheduleRequest;
@@ -31,12 +32,31 @@ public class UserSchedules extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_schedules);
         menuRow = findViewById(R.id.list);
-        ExtendedFloatingActionButton add;
+        ExtendedFloatingActionButton add, delete;
         add = findViewById(R.id.add);
+        delete = findViewById(R.id.delete);
         if (!preferences.getString("num", "").equals("9999999999")) {
             hideView(add);
         }
         add.setOnClickListener(view -> startActivity(new Intent(UserSchedules.this, AddUserSchedule.class).putExtra("id", getIntent().getStringExtra("id"))));
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                api.deleteUser("users", getIntent().getStringExtra("id")).enqueue(new Callback<String>() {
+                    @Override
+                    public void onResponse(Call<String> call, Response<String> response) {
+                        if (response.isSuccessful())
+                            makeText("deleted successfully..");
+                        finish();
+                    }
+
+                    @Override
+                    public void onFailure(Call<String> call, Throwable t) {
+
+                    }
+                });
+            }
+        });
     }
 
     @Override

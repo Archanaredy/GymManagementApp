@@ -79,6 +79,7 @@ public class EquipmentList extends BaseActivity {
         }
     });
     scan = findViewById(R.id.scan);
+        scan.setOnClickListener(view -> startActivityForResult(new Intent(EquipmentList.this, ScanActivity.class), LAUNCH_SECOND_ACTIVITY));
 
 }
 
