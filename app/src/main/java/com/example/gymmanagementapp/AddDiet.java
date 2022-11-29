@@ -28,7 +28,7 @@ import retrofit2.Response;
 
 public class AddDiet extends BaseActivity {
 
-    EditText name, description, image;
+    EditText name, description;
     Button add;
     String url = "no image";
     ImageView dp;
@@ -42,10 +42,9 @@ public class AddDiet extends BaseActivity {
         name = findViewById(R.id.name);
         description = findViewById(R.id.desc);
         add = findViewById(R.id.add);
-        image = findViewById(R.id.image);
         dp = findViewById(R.id.dp);
         add.setOnClickListener(view -> {
-            if (validator.validate(name) && validator.validate(description) && validator.validate(image))
+            if (validator.validate(name) && validator.validate(description))
                 add();
         });
         toAdd = getIntent().getStringExtra("route");
@@ -118,6 +117,7 @@ public class AddDiet extends BaseActivity {
             @Override
             public void onFailure(Call<BaseRequest> call, Throwable t) {
                 makeText(t.getMessage());
+                t.printStackTrace();
             }
 
         });

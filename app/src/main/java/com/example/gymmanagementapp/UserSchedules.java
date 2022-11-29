@@ -2,6 +2,7 @@ package com.example.gymmanagementapp;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -36,7 +37,8 @@ public class UserSchedules extends BaseActivity {
         add = findViewById(R.id.add);
         delete = findViewById(R.id.delete);
         if (!preferences.getString("num", "").equals("9999999999")) {
-            hideView(add);
+           // hideView(add);
+            hideView(delete);
         }
         add.setOnClickListener(view -> startActivity(new Intent(UserSchedules.this, AddUserSchedule.class).putExtra("id", getIntent().getStringExtra("id"))));
         delete.setOnClickListener(new View.OnClickListener() {
@@ -76,6 +78,42 @@ public class UserSchedules extends BaseActivity {
                 menuRow.setAdapter(adapter);
                 adapter.setMenuOptionList(menuOptionList);
                 adapter.setRecyclerClickListener(position -> {
+
+                    AlertDialog.Builder builder
+                            = new AlertDialog
+                            .Builder(UserSchedules.this);
+                    builder.setMessage("Delete schedule ?");
+                    builder.setTitle("Alert !");
+                    builder.setCancelable(false);
+
+                    builder
+                            .setPositiveButton(
+                                    "Yes",
+                                    (dialog, which) -> {
+                                        api.deleteUser("userschedules", response.body().get(position).get_id()).enqueue(new Callback<String>() {
+                                            @Override
+                                            public void onResponse(Call<String> call, Response<String> response) {
+                                                if (response.isSuccessful())
+                                                    makeText("Deleted successfully..");
+                                               fetchDate();
+                                            }
+
+                                            @Override
+                                            public void onFailure(Call<String> call, Throwable t) {
+
+                                            }
+                                        });
+                                    });
+
+                    builder
+                            .setNegativeButton(
+                                    "No",
+                                    (dialog, which) -> {
+                                        dialog.cancel();
+                                    });
+
+                    AlertDialog alertDialog = builder.create();
+                    alertDialog.show();
                 });
             }
 

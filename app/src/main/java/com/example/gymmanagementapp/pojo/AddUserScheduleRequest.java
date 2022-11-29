@@ -5,6 +5,15 @@ public class AddUserScheduleRequest {
     private String startTime;
     private String endTime;
     private String day;
+    private String _id;
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
+    }
 
     public AddUserScheduleRequest(String userId, String startTime, String endTime, String day) {
         this.userId = userId;

@@ -36,9 +36,12 @@ public class DietPlans extends BaseActivity {
         menuRow = findViewById(R.id.list);
         ExtendedFloatingActionButton add;
         add = findViewById(R.id.add);
-
+        if (!preferences.getString("num", "").equals("9999999999")) {
+            hideView(add);
+        }
         add.setOnClickListener(view -> {
             Intent intent = new Intent(DietPlans.this, AddDiet.class);
+            intent.putExtra("route","diets") ;
             startActivity(intent);
         });
         search = findViewById(R.id.search);

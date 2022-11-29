@@ -24,7 +24,11 @@ public class AdminDashBoard extends AppCompatActivity {
         userList.setOnClickListener(view -> startActivity(new Intent(AdminDashBoard.this, UserList.class)));
         profile.setOnClickListener(view -> startActivity(new Intent(AdminDashBoard.this, Profile.class)));
         workout.setOnClickListener(view -> startActivity(new Intent(AdminDashBoard.this, WorkOutList.class)));
-        diets.setOnClickListener(view -> startActivity(new Intent(AdminDashBoard.this, DietPlans.class)));
+        diets.setOnClickListener(view ->{
+            Intent intent = new Intent(AdminDashBoard.this, DietPlans.class);
+
+            startActivity(intent);
+        } );
     }
     @Override
     public void onBackPressed() {
